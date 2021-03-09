@@ -4,6 +4,7 @@ const bcryptjs = require('bcryptjs');
 const User = require('../models/User')(sequelize, DataTypes);
 const { validationResult } = require('express-validator');
 const paginate = require('express-paginate');
+const mailer = require('../helpers/Mail');
 
 const userGet = async (res, req)=>{
     let users = await User.findAll({
@@ -30,6 +31,8 @@ const userCreate = async (res, req)=>{
 
     let body = req.body;
     body.password = bcryptjs.hashSync(body.password, bcryptjs.genSaltSync())
+
+    mailer.sendEmail(body.email, "Creación de Usuario", "Ha creado su usuario de forma existosa!")
 
     let user = await User.create(req.body);
     await user.save();

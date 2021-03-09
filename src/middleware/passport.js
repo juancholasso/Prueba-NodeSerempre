@@ -1,9 +1,6 @@
 var passport = require('passport')
 var JwtStrategy = require('passport-jwt').Strategy,
 ExtractJwt = require('passport-jwt').ExtractJwt;
-let sequelize = require('../config/Database');
-const { DataTypes } = require('sequelize');
-const User = require('../models/User')(sequelize, DataTypes);
 
 var opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();

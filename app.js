@@ -10,7 +10,8 @@ var usersRouter = require('./src/routes/users');
 var citiesRouter = require('./src/routes/cities');
 var clientsRouter = require('./src/routes/clients');
 
-var a = require('./src/middleware/passport');
+var middlePassport = require('./src/middleware/passport');
+var a = require('./src/helpers/Mail');
 
 var app = express();
 
