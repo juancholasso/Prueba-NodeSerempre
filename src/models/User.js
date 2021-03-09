@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
 
+    toJSON(){
+      var instance = this.dataValues;
+      delete instance.password;
+      return instance;
+    }
+
   };
 
   User.init({
